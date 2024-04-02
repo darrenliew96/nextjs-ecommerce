@@ -17,8 +17,8 @@ export default function CustomDataTable() {
   }
 
   return (
-    <div className="">
-      <h2 className="text-xl font-bold mb-4">Recent order</h2>
+    <div className="mt-8">
+      <h2 className="text-slate-700 dark:text-slate-50 text-xl font-bold mb-4 px-4">Recent order</h2>
       {/* Table */}
 
       <div className="p-8">
