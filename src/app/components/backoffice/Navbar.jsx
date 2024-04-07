@@ -15,7 +15,7 @@ import ThemeSwitcherBtn from "../ThemeSwitcherBtn";
 
 export default function Navbar() {
   return (
-    <div className="flex items-center justify-between bg-white dark:bg-slate-800 text-slate-50 h-20 px-8 pr-80 py-4 fixed top-0 w-full z-50 left-60 shadow">
+    <div className="flex items-center justify-between bg-white dark:bg-slate-800 text-slate-50 h-20 px-8 pr-80 py-4 fixed top-0 w-full z-50 left-64 shadow">
       {/* Icon */}
       <button>
         <AlignJustify className="text-lime-700 dark:text-slate-50" />
