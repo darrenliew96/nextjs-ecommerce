@@ -13,11 +13,11 @@ import {
 import { LayoutGrid, Settings, LogOut } from "lucide-react";
 import ThemeSwitcherBtn from "../ThemeSwitcherBtn";
 
-export default function Navbar() {
+export default function Navbar({setShowSidebar, showSidebar}) {
   return (
-    <div className="flex items-center justify-between bg-white dark:bg-slate-800 text-slate-50 h-20 px-8 pr-80 py-4 fixed top-0 w-full z-50 left-64 shadow">
+    <div className="flex items-center justify-between bg-white dark:bg-slate-800 text-slate-50 h-20 px-8 lg:pr-[20rem] py-4 fixed top-0 w-full z-50 shadow">
       {/* Icon */}
-      <button>
+      <button onClick={()=> setShowSidebar(!showSidebar)}>
         <AlignJustify className="text-lime-700 dark:text-slate-50" />
       </button>
       {/* 3 Icons */}
