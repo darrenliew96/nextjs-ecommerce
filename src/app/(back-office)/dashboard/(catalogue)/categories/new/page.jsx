@@ -3,6 +3,7 @@ import SubmitButton from "@/app/components/FormInputs/SubmitButton";
 import TextInput from "@/app/components/FormInputs/TextInput";
 import TextareaInput from "@/app/components/FormInputs/TextareaInput";
 import FormHeader from "@/app/components/backoffice/FormHeader";
+import { generateSlug } from "@/lib/generateSlug";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -13,6 +14,8 @@ export default function NewCategory() {
     handleSubmit,
   } = useForm();
   async function onSubmit(data) {
+    const slug = generateSlug(data.title);
+    data.slug = slug;
     console.log(data);
   }
   return (
