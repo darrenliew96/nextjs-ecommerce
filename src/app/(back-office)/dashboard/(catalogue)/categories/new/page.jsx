@@ -1,34 +1,48 @@
 "use client";
+import ImageInput from "@/app/components/FormInputs/ImageInput";
 import SubmitButton from "@/app/components/FormInputs/SubmitButton";
 import TextInput from "@/app/components/FormInputs/TextInput";
 import TextareaInput from "@/app/components/FormInputs/TextareaInput";
 import FormHeader from "@/app/components/backoffice/FormHeader";
+import { makePostRequest } from "@/lib/apiRequest";
 import { generateSlug } from "@/lib/generateSlug";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 export default function NewCategory() {
+  const [imageUrl, setImageUrl] = useState(null);
+  const [loading, setLoading] = useState(false);
   const {
     register,
+    reset,
     formState: { errors },
     handleSubmit,
   } = useForm();
   async function onSubmit(data) {
-    const slug = generateSlug(data.title);
-    data.slug = slug;
-    console.log(data);
-  }
-  return (
-    <div>
-      <FormHeader title="New Category" />
-      {/* 
+    {
+      /* 
     -id
     -title
     -slug
     -description
     -image
-    */}
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-4xl p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 mx-auto my-3">
+    */
+    }
+    setLoading(true);
+    const slug = generateSlug(data.title);
+    data.slug = slug;
+    data.imageUrl = imageUrl;
+    console.log(data);
+    makePostRequest(setLoading, 'api/categories', data, "Category", reset);
+  }
+  return (
+    <div>
+      <FormHeader title="New Category" />
+
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full max-w-4xl p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 mx-auto my-3"
+      >
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
           <TextInput
             label="Category Title"
@@ -42,8 +56,18 @@ export default function NewCategory() {
             register={register}
             errors={errors}
           />
+          <ImageInput
+            imageUrl={imageUrl}
+            setImageUrl={setImageUrl}
+            endpoint="categoryImageUploader"
+            label="Category Image"
+          />
         </div>
-        <SubmitButton isLoading={false} buttonTitle="Create Category" loadingButtonTitle="Creating Category, Please Wait..." />
+        <SubmitButton
+          isLoading={loading}
+          buttonTitle="Create Category"
+          loadingButtonTitle="Creating Category, Please Wait..."
+        />
       </form>
     </div>
   );

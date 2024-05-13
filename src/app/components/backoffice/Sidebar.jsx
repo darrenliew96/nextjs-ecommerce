@@ -29,7 +29,6 @@ import {
 export default function Sidebar({ showSidebar, setShowSidebar }) {
   const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState(false);
-  console.log(showSidebar);
 
   const sidebarLinks = [
     {
