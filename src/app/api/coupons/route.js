@@ -9,7 +9,7 @@ export async function POST(request) {
   } catch (error) {
     console.log(error);
     return NextResponse.json(
-      { message: "Couldn't create Coupon. Something went wrong", error },
+      { message: "Couldn't create Store Banner. Something went wrong", error },
       { status: 500 }
     );
   }

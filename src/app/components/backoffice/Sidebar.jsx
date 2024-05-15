@@ -79,9 +79,9 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
       href: "/dashboard/coupons",
     },
     {
-      title: "Store Sliders",
+      title: "Store Banner",
       icon: MonitorPlay,
-      href: "/dashboard/sliders",
+      href: "/dashboard/banners",
     },
   ];
   return (
@@ -114,7 +114,7 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
             className=""
             onClick={() => setOpenMenu(!openMenu)}
           >
-            <button className="flex items-center  space-x-6 py-2 ">
+            <button className="flex items-center space-x-6 py-2 ">
               <div className="flex items-center space-x-3">
                 <ListOrdered />
                 <span>Catalogue</span>
@@ -122,7 +122,7 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
               {openMenu ? <ChevronDown /> : <ChevronRight />}
             </button>
           </CollapsibleTrigger>
-          <CollapsibleContent className="px-3 bg-slate-200 dark:bg-slate-800 rounded-md">
+          <CollapsibleContent className="px-3 bg-slate-200 dark:bg-slate-600 rounded-md">
             {catalogueLinks.map((item, i) => {
               const Icon = item.icon;
               return (

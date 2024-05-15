@@ -1,16 +1,16 @@
 "use client";
+import ImageInput from "@/app/components/FormInputs/ImageInput";
 import SubmitButton from "@/app/components/FormInputs/SubmitButton";
 import TextInput from "@/app/components/FormInputs/TextInput";
 import FormHeader from "@/app/components/backoffice/FormHeader";
 import { makePostRequest } from "@/lib/apiRequest";
-import { generateCouponCode } from "@/lib/generateCouponCode";
 import { generateSlug } from "@/lib/generateSlug";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-export default function NewCoupon() {
+export default function NewBanner() {
   const [loading, setLoading] = useState(false);
-  const [couponCode, setCouponCode] = useState();
+  const [imageUrl, setImageUrl] = useState(null);
   const {
     register,
     reset,
@@ -22,20 +22,21 @@ export default function NewCoupon() {
       /* 
     -id => auto()
     -title
-    -code => auto()
-    -expiry date
+    -link
+    -description
+    -image
     */
     }
-    const couponCode = generateCouponCode(data.title,data.expiryDate);
-    data.couponCode = couponCode;
+    data.imageUrl = imageUrl;
     setLoading(true);
-    
+
     console.log(data);
-    makePostRequest(setLoading, "api/coupons", data, "Coupon", reset);
+    makePostRequest(setLoading, "api/banners", data, "Banner", reset);
+    setImageUrl("");
   }
   return (
     <div>
-      <FormHeader title="New Category" />
+      <FormHeader title="New Banner" />
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -43,32 +44,31 @@ export default function NewCoupon() {
       >
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
           <TextInput
-            label="Coupon Title"
+            label="Banner Title"
             name="title"
             register={register}
             errors={errors}
+            className="w-full"
           />
           <TextInput
-            label="Coupon Code"
-            name="couponCode"
-            defaultValue="xxxasdasd"
+            label="Banner Link"
+            name="link"
             register={register}
             errors={errors}
             className="w-full"
           />
-          <TextInput
-            label="Coupon Expiry Date"
-            name="expiryDate"
-            type="date"
-            register={register}
-            errors={errors}
-            className="w-full"
+          {/* {configure endpoint in the core js} */}
+          <ImageInput
+            imageUrl={imageUrl}
+            setImageUrl={setImageUrl}
+            endpoint="bannerImageUploader"
+            label="Banner Image"
           />
         </div>
         <SubmitButton
           isLoading={loading}
-          buttonTitle="Create Coupon"
-          loadingButtonTitle="Creating Coupon, Please Wait..."
+          buttonTitle="Create Banner"
+          loadingButtonTitle="Creating Banner, Please Wait..."
         />
       </form>
     </div>
