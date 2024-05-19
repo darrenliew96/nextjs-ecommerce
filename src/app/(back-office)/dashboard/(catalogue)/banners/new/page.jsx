@@ -48,14 +48,13 @@ export default function NewBanner() {
             name="title"
             register={register}
             errors={errors}
-            className="w-full"
           />
           <TextInput
             label="Banner Link"
             name="link"
+            type="url"
             register={register}
             errors={errors}
-            className="w-full"
           />
           {/* {configure endpoint in the core js} */}
           <ImageInput

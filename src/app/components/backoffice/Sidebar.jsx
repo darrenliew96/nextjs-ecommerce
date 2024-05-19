@@ -18,6 +18,7 @@ import {
   ScanSearch,
   MonitorPlay,
   ChevronDown,
+  ShoppingBasket,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import {
@@ -35,6 +36,11 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
       title: "Customers",
       icon: Users2,
       href: "/dashboard/customers",
+    },
+    {
+      title: "Marketplace",
+      icon: ShoppingBasket,
+      href: "/dashboard/marketplace",
     },
     {
       title: "Staffs",

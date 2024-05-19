@@ -22,8 +22,9 @@ export default function TextareaInput({
           name={name}
           id={name}
           rows={3}
-          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-500 sm:text-sm sm:leading-6 bg-transparent dark:text-slate-50"
+          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-slate-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-500 sm:text-sm sm:leading-6 bg-transparent dark:text-slate-50"
           defaultValue={""}
+          placeholder={`Type the ${label.toLowerCase()}`}
         />
         {errors[`${name}`] && (
           <span className="text-sm text-red-600 ">{label} is required</span>
