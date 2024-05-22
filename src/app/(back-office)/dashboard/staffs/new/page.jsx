@@ -27,8 +27,8 @@ export default function NewStaff() {
     -expiry date
     */
     }
-    const staffUniqueCode = generateUserCode(data.name, data.email);
-    data.couponCode = couponCode;
+    const code = generateUserCode("MEC", data.name);
+    data.code = code;
     setLoading(true);
 
     console.log(data);
@@ -44,7 +44,7 @@ export default function NewStaff() {
       >
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
           <TextInput
-            label="Staff's Name"
+            label="Staff's Full Name"
             name="name"
             register={register}
             errors={errors}
@@ -53,6 +53,7 @@ export default function NewStaff() {
           <TextInput
             label="Staff's Phone Number"
             name="phone"
+            type="tel"
             register={register}
             errors={errors}
             className="w-full"
