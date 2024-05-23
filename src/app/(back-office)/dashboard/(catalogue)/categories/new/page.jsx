@@ -1,5 +1,6 @@
 "use client";
 import ImageInput from "@/app/components/FormInputs/ImageInput";
+import SelectInput from "@/app/components/FormInputs/SelectInput";
 import SubmitButton from "@/app/components/FormInputs/SubmitButton";
 import TextInput from "@/app/components/FormInputs/TextInput";
 import TextareaInput from "@/app/components/FormInputs/TextareaInput";
@@ -12,6 +13,12 @@ import { useForm } from "react-hook-form";
 export default function NewCategory() {
   const [imageUrl, setImageUrl] = useState(null);
   const [loading, setLoading] = useState(false);
+  const marketplace = [
+    { id: 1, title: "Anti-Hypertensive" },
+    { id: 2, title: "Anti-Diabetic" },
+    { id: 3, title: "Anti-Tussive" },
+    { id: 4, title: "Anti-Pyrexic" },
+  ];
   const {
     register,
     reset,
@@ -33,7 +40,7 @@ export default function NewCategory() {
     data.slug = slug;
     data.imageUrl = imageUrl;
     console.log(data);
-    makePostRequest(setLoading, 'api/categories', data, "Category", reset);
+    makePostRequest(setLoading, "api/categories", data, "Category", reset);
     setImageUrl("");
   }
   return (
@@ -50,6 +57,16 @@ export default function NewCategory() {
             name="title"
             register={register}
             errors={errors}
+            className=""
+          />
+          <SelectInput
+            label="Select Marketplace"
+            name="marketIds"
+            register={register}
+            errors={errors}
+            options={marketplace}
+            hasMultipleSelect={true}
+            className="w-full"
           />
           <TextareaInput
             label="Category Description"

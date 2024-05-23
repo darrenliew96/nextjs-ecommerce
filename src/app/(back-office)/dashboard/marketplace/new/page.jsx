@@ -1,6 +1,5 @@
 "use client";
 import ImageInput from "@/app/components/FormInputs/ImageInput";
-import SelectInput from "@/app/components/FormInputs/SelectInput";
 import SubmitButton from "@/app/components/FormInputs/SubmitButton";
 import TextInput from "@/app/components/FormInputs/TextInput";
 import TextareaInput from "@/app/components/FormInputs/TextareaInput";
@@ -49,12 +48,6 @@ export default function NewMarketplace() {
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
           <TextInput
             label="Marketplace Title"
-            name="title"
-            register={register}
-            errors={errors}
-          />
-          <SelectInput
-            label="Select Marketplace"
             name="title"
             register={register}
             errors={errors}
