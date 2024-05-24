@@ -29,7 +29,7 @@ export async function POST(request) {
   } catch (error) {
     console.log(error);
     return NextResponse.json(
-      { message: "Couldn't create Staff. Something went wrong", error },
+      { message: "Couldn't create Agent. Something went wrong", error },
       { status: 500 }
     );
   }

@@ -2,14 +2,14 @@ import React from "react";
 import PageHeader from "@/app/components/backoffice/PageHeader";
 import TableActions from "@/app/components/backoffice/TableActions";
 
-export default function page() {
+export default function Agents() {
   return (
     <div>
       {/* Header */}
       <PageHeader
-        heading="Products"
-        href="/dashboard/products/new"
-        linkTitle="Add Product"
+        heading="Agents"
+        href="/dashboard/agents/new"
+        linkTitle="Add Agent"
       />
       {/* Table Actions */}
       {/* Export || Search || Bulk Delete */}
