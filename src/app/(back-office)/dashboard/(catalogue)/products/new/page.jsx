@@ -38,13 +38,14 @@ export default function NewProduct() {
     -title
     -slug =>auto
     -description
+    -productPrice
     -sku
     -barcode
-    -productPrice
     -salePrice
     -categories
     -staff
-    -image
+    -image/images[]
+    -product tags[]
     */
     }
     setLoading(true);
@@ -65,32 +66,61 @@ export default function NewProduct() {
       >
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
           <TextInput
-            label="Category Title"
+            label="Product Title"
             name="title"
             register={register}
             errors={errors}
             className=""
           />
-          <SelectInput
-            label="Select Categories"
-            name="categoriesIds"
+          <TextInput
+            label="Product SKU"
+            name="sku"
             register={register}
             errors={errors}
-            options={cat}
-            hasMultipleSelect={true}
-            className="w-full"
+            className=""
           />
-          <TextareaInput
-            label="Category Description"
-            name="description"
+          <TextInput
+            label="Product Barcode"
+            name="barcode"
             register={register}
             errors={errors}
+            className=""
+          />
+          <TextInput
+            label="Product Price"
+            name="productPrice"
+            type="number"
+            register={register}
+            errors={errors}
+            className=""
+          />
+          <TextInput
+            label="Product Sale Price"
+            name="salePrice"
+            type="number"
+            register={register}
+            errors={errors}
+            className=""
+          />
+          <SelectInput
+            label="Select Category"
+            name="categoryIds"
+            register={register}
+            errors={errors}
+            options={categories}
+            className="w-full"
           />
           <ImageInput
             imageUrl={imageUrl}
             setImageUrl={setImageUrl}
             endpoint="categoryImageUploader"
             label="Category Image"
+          />
+          <TextareaInput
+            label="Product Description"
+            name="description"
+            register={register}
+            errors={errors}
           />
         </div>
         <SubmitButton
